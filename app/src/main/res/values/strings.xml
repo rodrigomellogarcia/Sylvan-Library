@@ -4,4 +4,8 @@
     <string name="search_hint">Busque por um card.</string>
     <string name="search_button">Pesquisar</string>
 
+
+    <string name="details_card_sample_text">Flying, vigilance, indestructible\nOther permanents you control have indestructible.</string>
+    <string name="details_see_on_gatherer">Ver card no Gatherer</string>
+
 </resources>

@@ -1,5 +1,7 @@
 package com.example.sylvanlibrary.utils;
 
+import android.util.Log;
+
 import com.example.sylvanlibrary.Card;
 
 import org.json.JSONArray;
@@ -25,12 +27,34 @@ public class JsonUtils {
         }
 
         Card[] cards = new Card[cardsJsonArray.length()];
+
+
         for (int i = 0; i < cards.length; i++) {
+            String newCardName = null;
+            String newCardImageUrl = null;
+            int newCardMultiverseId = 0;
+
             try {
-                cards[i] = new Card(cardsJsonArray.getJSONObject(i).getString("name"));
+                newCardName = cardsJsonArray.getJSONObject(i).getString("name");
+            } catch (JSONException e) {
+                e.printStackTrace();
+                //Log.w("JsonUtils", "Card[" + Integer.toString(i) + "] doesn't have name field");
+            }
+
+            try {
+                newCardImageUrl = cardsJsonArray.getJSONObject(i).getString("imageUrl");
+            } catch (JSONException e) {
+                e.printStackTrace();
+                //Log.w("JsonUtils", "Card[" + Integer.toString(i) + "] doesn't have imageUrl field");
+            }
+
+            try {
+                newCardMultiverseId = cardsJsonArray.getJSONObject(i).getInt("multiverseid");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+            cards[i] = new Card(newCardName, newCardImageUrl, newCardMultiverseId);
         }
 
         return cards;

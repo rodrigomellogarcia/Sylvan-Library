@@ -4,28 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.sylvanlibrary.utils.JsonUtils;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 
-import io.magicthegathering.javasdk.api.CardAPI;
-import io.magicthegathering.javasdk.resource.Card;
+//import io.magicthegathering.javasdk.api.CardAPI;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements CardAdapter.ListCardClickListener {
 
     EditText mSearchEditText;
     Button mSearchButton;
@@ -48,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(false);
 
-        mCardAdapter = new CardAdapter();
+        mCardAdapter = new CardAdapter(this);
 
         mRecyclerView.setAdapter(mCardAdapter);
     }
@@ -60,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         URL url = NetworkUtils.buildURLSearchByName(searchedName);
 
         new SearchByNameTask().execute(url);
+    }
+
+    @Override
+    public void onListCardClick(int clickedCardIndex) {
+        Intent intent = new Intent(this, CardDetailsActivity.class);
+        intent.putExtra("card", (Serializable) mCardAdapter.cards[clickedCardIndex]);
+        startActivity(intent);
     }
 
     public class SearchByNameTask extends AsyncTask<URL, Void, String> {
@@ -86,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
-            mSearchStatusTextView.setText("Foram encontrados " + Integer.toString(JsonUtils.JsonToCards(s).length)  + " resultados.");
-            mCardAdapter.setCards(JsonUtils.JsonToCards(s));
+            Card[] cards = JsonUtils.JsonToCards(s);
+            mSearchStatusTextView.setText("Foram encontrados " + Integer.toString(cards.length)  + " resultados.");
+            mCardAdapter.setCards(cards);
         }
     }
 
