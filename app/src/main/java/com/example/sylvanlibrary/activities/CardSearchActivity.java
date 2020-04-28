@@ -1,4 +1,4 @@
-package com.example.sylvanlibrary;
+package com.example.sylvanlibrary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,15 +12,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.sylvanlibrary.Card;
+import com.example.sylvanlibrary.CardAdapter;
+import com.example.sylvanlibrary.utils.NetworkUtils;
+import com.example.sylvanlibrary.R;
 import com.example.sylvanlibrary.utils.JsonUtils;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URL;
 
-//import io.magicthegathering.javasdk.api.CardAPI;
-
-public class MainActivity extends AppCompatActivity implements CardAdapter.ListCardClickListener {
+public class CardSearchActivity extends AppCompatActivity implements CardAdapter.ListCardClickListener {
 
     EditText mSearchEditText;
     Button mSearchButton;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements CardAdapter.ListC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_card_seach);
 
         mSearchEditText = findViewById(R.id.et_search);
         mSearchButton = findViewById(R.id.button_search);

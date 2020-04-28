@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Sylvan Library</string>
 
+    <string name="main_search">Pesquisar Card</string>
+    <string name="main_binder">Minha Pasta</string>
+
     <string name="search_hint">Busque por um card.</string>
     <string name="search_button">Pesquisar</string>
 

@@ -1,4 +1,4 @@
-package com.example.sylvanlibrary;
+package com.example.sylvanlibrary.utils;
 
 import android.net.Uri;
 

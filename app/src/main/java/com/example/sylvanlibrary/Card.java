@@ -5,13 +5,16 @@ import androidx.annotation.Nullable;
 import java.io.Serializable;
 
 public class Card  implements Serializable {
+    public int id;
+    public int multiverseId;
     public String name;
     public String imageUrl;
-    public int multiverseId;
+    public String type;
 
-    public Card(String name, @Nullable String imageUrl, int multiverseId) {
+    public Card(String name, @Nullable String imageUrl, String type, int multiverseId) {
         this.name = name;
         this.imageUrl = imageUrl;
+        this.type = type;
         this.multiverseId = multiverseId;
     }
 

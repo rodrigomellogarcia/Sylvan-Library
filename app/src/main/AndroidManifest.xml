@@ -12,15 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".CardDetailsActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.NewBinderActivity"></activity>
+        <activity android:name=".activities.BinderListActivity" />
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.BinderActivity" />
+        <activity android:name=".activities.CardDetailsActivity" />
+        <activity android:name=".activities.CardSearchActivity" />
     </application>
 
 </manifest>

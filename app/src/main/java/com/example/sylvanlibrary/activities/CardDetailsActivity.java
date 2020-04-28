@@ -1,4 +1,4 @@
-package com.example.sylvanlibrary;
+package com.example.sylvanlibrary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.sylvanlibrary.Card;
+import com.example.sylvanlibrary.R;
 import com.squareup.picasso.Picasso;
 
 public class CardDetailsActivity extends AppCompatActivity {

@@ -32,6 +32,7 @@ public class JsonUtils {
         for (int i = 0; i < cards.length; i++) {
             String newCardName = null;
             String newCardImageUrl = null;
+            String newCardType = null;
             int newCardMultiverseId = 0;
 
             try {
@@ -49,12 +50,18 @@ public class JsonUtils {
             }
 
             try {
+                newCardType = cardsJsonArray.getJSONObject(i).getString("type");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            try {
                 newCardMultiverseId = cardsJsonArray.getJSONObject(i).getInt("multiverseid");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            cards[i] = new Card(newCardName, newCardImageUrl, newCardMultiverseId);
+            cards[i] = new Card(newCardName, newCardImageUrl, newCardType, newCardMultiverseId);
         }
 
         return cards;

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder>{
-    Card[] cards;
+    public Card[] cards;
 
     ListCardClickListener mListCardClickListener;
 
@@ -63,7 +63,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
     class CardViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView mNameTextView;
-        //TextView mImageUrlTextView;
+        TextView mCardType;
         ImageView mCardPreviewImageView;
         ListCardClickListener mListCardClickListener;
 
@@ -72,10 +72,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
             super(itemView);
             mNameTextView = (TextView) itemView.findViewById(R.id.tv_name);
             mCardPreviewImageView = (ImageView) itemView.findViewById(R.id.iv_card_preview);
+            mCardType = (TextView) itemView.findViewById(R.id.tv_card_type);
             mListCardClickListener = clickListener;
 
             itemView.setOnClickListener(this);
-            //mImageUrlTextView = (TextView) itemView.findViewById(R.id.tv_image_url);
         }
 
         void bind(Card card) {
@@ -83,16 +83,10 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.CardViewHolder
                 return;
             }
 
-            if (card.name != null)
-                mNameTextView.setText(card.name);
-            else {
-                Log.w("CardAdapter","Tentando ler nome null em CardViewHolder.bind()");
-                mNameTextView.setText("ERROR NAME");
-            }
-
+            if (card.name != null) mNameTextView.setText(card.name);
+            if (card.type != null) mCardType.setText(card.type);
             if(card.imageUrl != null) {
                 Picasso.get().load(card.imageUrl).into(mCardPreviewImageView);
-                //mImageUrlTextView.setText(card.imageUrl);
             } else {
                 Picasso.get().load(Card.getCardBackUrl()).into(mCardPreviewImageView);
             }
