@@ -1,12 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/boldBackground"
+    tools:context=".activities.CardSearchActivity">
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:hint="@string/search_hint"
+        android:textColor="#F0F0F5"
+        android:textColorHint="#AAAAB9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_search"/>
+
+    <Button
+        android:id="@+id/button_search"
+        style="@style/ButtonRound"
+        app:layout_constraintLeft_toRightOf="@+id/et_search"
+        app:layout_constraintTop_toTopOf="@+id/et_search"
+        app:layout_constraintBottom_toBottomOf="@+id/et_search"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/search_button"
+        android:onClick="searchByName"/>
+
+    <TextView
+        android:id="@+id/tv_search_status"
+        style="@style/BoldCardContentsTextView"
+        app:layout_constraintTop_toBottomOf="@id/et_search"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="2048 resultados encontrados."/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cards"
+        app:layout_constraintTop_toBottomOf="@+id/tv_search_status"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/card_list_item"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.CardSearchActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/boldBackground">
 
     <EditText
         android:id="@+id/et_search"
@@ -14,10 +84,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:hint="@string/search_hint"/>
+        android:hint="@string/search_hint"
+        android:textColor="#F0F0F5"
+        android:textColorHint="#AAAAB9"/>
 
     <Button
         android:id="@+id/button_search"
+        style="@style/Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -26,6 +99,7 @@
 
     <TextView
         android:id="@+id/tv_search_status"
+        style="@style/BoldCardContentsTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -37,3 +111,5 @@
         android:layout_height="match_parent"/>
 
 </LinearLayout>
+
+-->

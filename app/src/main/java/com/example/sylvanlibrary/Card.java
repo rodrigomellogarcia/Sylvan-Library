@@ -9,13 +9,15 @@ public class Card  implements Serializable {
     public int multiverseId;
     public String name;
     public String imageUrl;
+    public String imageCropUrl;
     public String type;
 
-    public Card(String name, @Nullable String imageUrl, String type, int multiverseId) {
+    public Card(int multiverseId, String name, String type, @Nullable String imageUrl, String imageCropUrl) {
         this.name = name;
         this.imageUrl = imageUrl;
         this.type = type;
         this.multiverseId = multiverseId;
+        this.imageCropUrl = imageCropUrl;
     }
 
     public static String getCardBackUrl() {

@@ -1,10 +1,8 @@
 package com.example.sylvanlibrary.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,7 +41,7 @@ public class BinderListActivity extends AppCompatActivity implements BinderAdapt
         recyclerView.setAdapter(mAdapter);
 
         mDatabase = BinderDatabase.getInstance(getApplicationContext());
-        retrieveBinders();
+        setupViewModel();
     }
 
     @Override
@@ -52,12 +50,13 @@ public class BinderListActivity extends AppCompatActivity implements BinderAdapt
         // retrieveBinders();
     }
 
-    private void retrieveBinders() {
-        final LiveData<List<Binder>> binders = mDatabase.binderDao().loadAllBinders();
-        //BinderListViewModel viewModel = ViewModelProviders.of(this).get(BinderListViewModel.class);
-        binders.observe(this, new Observer<List<Binder>>() {
+    private void setupViewModel() {
+        //final LiveData<List<Binder>> binders = mDatabase.binderDao().loadAllBinders();
+        BinderListViewModel viewModel = new ViewModelProvider(this).get(BinderListViewModel.class);
+        viewModel.getBinders().observe(this, new Observer<List<Binder>>() {
             @Override
             public void onChanged(List<Binder> binders) {
+                Log.d(BinderListActivity.class.getSimpleName(), "Updating binders list from ViewModel");
                 mAdapter.setBinders(binders);
             }
         });

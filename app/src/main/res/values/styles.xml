@@ -8,4 +8,39 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="BoldCardView">
+        <item name="cardBackgroundColor">@color/boldCardBackground</item>
+    </style>
+
+    <style name="BoldCardTitleTextView">
+        <item name="fontFamily">@font/open_sans_light</item>
+        <item name="android:textColor">@color/boldText</item>
+    </style>
+
+    <style name="BoldCardContentsTextView">
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/boldText</item>
+    </style>
+
+    <style name="Button">
+        <item name="android:background">@drawable/custom_button</item>
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/boldText</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="ButtonStroke">
+        <item name="android:background">@drawable/button_stroke</item>
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="ButtonRound">
+        <item name="android:background">@drawable/button_round</item>
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textColor">@color/boldText</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+
 </resources>
